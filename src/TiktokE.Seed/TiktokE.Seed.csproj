@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TiktokE.Core\TiktokE.Core.csproj" />
+    <ProjectReference Include="..\TiktokE.Db\TiktokE.Db.csproj" />
+  </ItemGroup>
+
+</Project>
