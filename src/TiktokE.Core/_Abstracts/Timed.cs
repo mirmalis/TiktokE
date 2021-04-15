@@ -8,5 +8,9 @@ namespace TiktokE.Core
     public DateTime? Until { get; set; }
     public DateTime Recorded { get; set; } = DateTime.Now;
     public DateTime LastSeen { get; set; } = DateTime.Now;
+    public bool IsActive(DateTime? dt)
+    {
+      return (Since == null || Since <= dt) && (Until == null || Until > dt);
+    }
   }
 }

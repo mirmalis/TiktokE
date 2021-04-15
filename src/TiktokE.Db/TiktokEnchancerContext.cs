@@ -15,6 +15,7 @@ namespace TiktokE.Db
     public DbSet<Core.TT.Tag> Tags { get; set; }
 
     public DbSet<Core.TT.Channel> Channels { get; set; }
+    public DbSet<Core.TT.Handle> Handles { get; set; }
     public DbSet<Core.TT.Comment> Comments { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

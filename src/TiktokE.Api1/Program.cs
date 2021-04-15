@@ -13,6 +13,7 @@ namespace TiktokE.Api1
   {
     public static void Main(string[] args)
     {
+      Console.WriteLine("E8A2311F-04E6-4FF5-9B57-F5FAC1F83B44");
       CreateHostBuilder(args).Build().Run();
     }
 

@@ -17,6 +17,7 @@ namespace TiktokE.Seed.Reimplementations
       this.Handles = new List<Core.TT.ChannelHandle>() {
         new Core.TT.ChannelHandle(){ Handle = handle }
       };
+      this.Seen = true;
     }
     public Channel(string name, string handleName = null) : this(name, new Handle(handleName ?? name))
     {
