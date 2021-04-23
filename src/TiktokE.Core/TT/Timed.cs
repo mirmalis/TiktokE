@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace TiktokE.Core
+namespace TiktokE.Core.TT
 {
-  public class Timed : IDed
+  public abstract class Timed : TikTokEntity, ITimed
   {
-    public DateTime? Since { get; set; }
+    #region Constructors
+    public Timed() { }
+    public Timed(ulong ttid) : base(ttid)
+    {
+
+    }
+    #endregion
     public DateTime? Until { get; set; }
     public DateTime Recorded { get; set; } = DateTime.Now;
     public DateTime LastSeen { get; set; } = DateTime.Now;
-    public bool IsActive(DateTime? dt)
-    {
-      return (Since == null || Since <= dt) && (Until == null || Until > dt);
-    }
+    
   }
 }

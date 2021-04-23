@@ -23,17 +23,17 @@ namespace TiktokE.Seed.Reimplementations
       }
       return this;
     }
-    public User AddTagPreference(Core.PreferenceType type, params Core.TT.Tag[] linkTexts)
-    {
-      this.TagPreferences ??= new List<Core.TagPreference>();
+    //public User AddTagPreference(Core.PreferenceType type, params Core.TT.Tag[] linkTexts)
+    //{
+    //  this.TagPreferences ??= new List<Core.TagPreference>();
 
-      foreach (var preference in linkTexts.Select(item => new Core.TagPreference(){ User = this, Tag = item, Type = type }))
-      {
-        this.TagPreferences.Add(preference);
-      }
+    //  foreach (var preference in linkTexts.Select(item => new Core.TagPreference(){ User = this, Tag = item, Type = type }))
+    //  {
+    //    this.TagPreferences.Add(preference);
+    //  }
 
-      return this;
-    }
+    //  return this;
+    //}
     public User AddVideoInterraction(Core.VideoInteraction type, params Video[] videos)
     {
       this.VideoInteractions ??= new List<Core.UserVideoInteraction>();

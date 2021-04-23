@@ -107,40 +107,40 @@ namespace TiktokE.Api1.Controllers
     } 
     #endregion
     #region tagPreferences
-    // GET: api/Users/5/tagpreferences
-    [HttpGet("{id}/tagpreferences")]
-    public async Task<ActionResult<IEnumerable<Types.User.XTagPreference>>> GetUserTagPreferences(Guid id)
-    {
-      if (!UserExists(id))
-      {
-        return NotFound();
-      }
-      return await _context.TagPreferences
-        .Where(item => item.UserID == id)
-        .Select(item => new Types.User.XTagPreference()
-        {
-          ID = item.ID,
-          TagID = item.TagID,
-          Delete = item.Type == PreferenceType.Ignore
-        })
-        .ToListAsync()
-      ;
-    }
+    //// GET: api/Users/5/tagpreferences
+    //[HttpGet("{id}/tagpreferences")]
+    //public async Task<ActionResult<IEnumerable<Types.User.XTagPreference>>> GetUserTagPreferences(Guid id)
+    //{
+    //  if (!UserExists(id))
+    //  {
+    //    return NotFound();
+    //  }
+    //  return await _context.TagPreferences
+    //    .Where(item => item.UserID == id)
+    //    .Select(item => new Types.User.XTagPreference()
+    //    {
+    //      ID = item.ID,
+    //      TagID = item.TagID,
+    //      Delete = item.Type == PreferenceType.Ignore
+    //    })
+    //    .ToListAsync()
+    //  ;
+    //}
     #endregion
     #region deletedLinks
-    [HttpGet("{id}/deletedlinks")]
-    public async Task<ActionResult<IEnumerable<string>>> GetDeletedTags(Guid id)
-    {
-      if (!UserExists(id))
-      {
-        return NotFound();
-      }
-      return await _context.TagPreferences
-        .Where(item => item.UserID == id && item.Type == PreferenceType.Ignore)
-        .Select(item => $"#{item.TagID}")
-        .ToListAsync()
-      ;
-    }
+    //[HttpGet("{id}/deletedlinks")]
+    //public async Task<ActionResult<IEnumerable<string>>> GetDeletedTags(Guid id)
+    //{
+    //  if (!UserExists(id))
+    //  {
+    //    return NotFound();
+    //  }
+    //  return await _context.TagPreferences
+    //    .Where(item => item.UserID == id && item.Type == PreferenceType.Ignore)
+    //    .Select(item => $"#{item.TagID}")
+    //    .ToListAsync()
+    //  ;
+    //}
     #endregion
     #region deletedUploaders
     [HttpGet("{id}/deletedUploaders")] public async Task<ActionResult<IEnumerable<string>>> GetDeletedUploaders(Guid id)
@@ -161,12 +161,12 @@ namespace TiktokE.Api1.Controllers
       if (!UserExists(id))
         return NotFound();
       var handle = _context.Handles
-        .Include(item => item.Channels)
+        .Include(item => item.ChannelAssignments)
         .FirstOrDefault(item => item.ID == handleName);
       if (handle == null)
         return BadRequest("No such handle in a database");
 
-      var channelIDs = handle.Channels.Where(item => item.Until == null).Select(item => item.ChannelID);
+      var channelIDs = handle.ChannelAssignments.Where(item => item.Until == null).Select(item => item.ChannelID);
       var preferences = _context.UploaderPreferences.Where(item => item.UserID == id && channelIDs.Contains(item.ChannelID));
       _context.UploaderPreferences.RemoveRange(preferences);
       await _context.SaveChangesAsync();
@@ -180,11 +180,10 @@ namespace TiktokE.Api1.Controllers
           new Core.TT.Channel()
           {
             Name = handleName,
-            Handles = new List<Core.TT.ChannelHandle>() {
-              new Core.TT.ChannelHandle(){
+            Handles = new List<Core.TT.Channel_Handle>() {
+              new Core.TT.Channel_Handle(){
                 Handle = new Core.TT.Handle() {
-                  ID = handleName,
-                  Name = handleName
+                  ID = handleName
                 }
               }
             }
@@ -194,11 +193,11 @@ namespace TiktokE.Api1.Controllers
       }
       var usersUploaderPreferences = await _context.UploaderPreferences.Where(item => item.UserID == id).ToListAsync();
       var handle = _context.Handles
-        .Include(item => item.Channels)
+        .Include(item => item.ChannelAssignments)
         .FirstOrDefault(item => item.ID == handleName)
       ;
       var channelsToBlock = handle
-        ?.Channels
+        ?.ChannelAssignments
         .Where(item => item.IsActive(DateTime.Now))
       ;
       foreach (var channel in channelsToBlock)

@@ -11,59 +11,19 @@
         <Position X="-0.214" Y="-0.005" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="TagPreferences" Type="TiktokE.Core.TagPreference" FixedFromPoint="true">
-      <Path>
-        <Point X="16.25" Y="13.233" />
-        <Point X="16.25" Y="14.5" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="VideoInteractions" Type="TiktokE.Core.UserVideoInteraction">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.029" Y="-0.248" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAABAAACAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAQAAAAABAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="ChannelPreferencess" />
-      <Property Name="TagPreferences" />
       <Property Name="VideoInteractions" />
     </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="TiktokE.Core.TagPreference">
-    <Position X="15.75" Y="14.5" Width="1.5" />
-    <Members>
-      <Property Name="TagID" Hidden="true" />
-      <Property Name="UserID" Hidden="true" />
-    </Members>
-    <AssociationLine Name="User" Type="TiktokE.Core.User" FixedFromPoint="true">
-      <Path>
-        <Point X="16.562" Y="14.5" />
-        <Point X="16.562" Y="13.233" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.587" Y="0.175" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="Tag" Type="TiktokE.Core.TT.Tag" FixedToPoint="true">
-      <Path>
-        <Point X="17.25" Y="14.812" />
-        <Point X="19.75" Y="14.812" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.125" Y="-0.003" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAABAAAAAAAgAAAAAAAAAAgAAAAAAQAAAQAAAAAAAAA=</HashCode>
-      <FileName>TagPreference.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="User" />
-      <Property Name="Tag" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="TiktokE.Core.UploaderPreference">
     <Position X="12" Y="12" Width="1.75" />
@@ -89,215 +49,83 @@
   <Class Name="TiktokE.Core.TT.Channel">
     <Position X="12.25" Y="9.5" Width="1.5" />
     <Members>
-      <Property Name="TTID" Hidden="true" />
+      <Property Name="ActiveHandleID" Hidden="true" />
     </Members>
-    <AssociationLine Name="Handles" Type="TiktokE.Core.TT.ChannelHandle" FixedFromPoint="true">
+    <AssociationLine Name="ActiveHandle" Type="TiktokE.Core.TT.Handle" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="12.875" Y="9.5" />
-        <Point X="12.875" Y="7.997" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="Comments" Type="TiktokE.Core.TT.Comment" FixedFromPoint="true">
-      <Path>
-        <Point X="13.75" Y="9.885" />
-        <Point X="15.75" Y="9.885" />
+        <Point X="13.062" Y="9.5" />
+        <Point X="13.062" Y="7.625" />
+        <Point X="19.5" Y="7.625" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAEAAAAAAEAAAQAQAAAAAAAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAAAAAAAAAEAAAAAAEAAAQAAAAAAABAIAAAAABAAAA=</HashCode>
       <FileName>TT\Channel.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ActiveHandle" />
+    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Handles" />
-      <Property Name="Comments" />
     </ShowAsCollectionAssociation>
-    <Lollipop Orientation="Left" Position="0.485" />
   </Class>
   <Class Name="TiktokE.Core.TT.Handle">
     <Position X="19.5" Y="7" Width="1.5" />
-    <AssociationLine Name="Videos" Type="TiktokE.Core.TT.Video" FixedFromPoint="true">
-      <Path>
-        <Point X="20.188" Y="8.296" />
-        <Point X="20.188" Y="9.5" />
-      </Path>
+    <AssociationLine Name="Videos" Type="TiktokE.Core.TT.Video">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.254" Y="0.11" />
       </MemberNameLabel>
     </AssociationLine>
+    <AssociationLine Name="ChannelAssignments" Type="TiktokE.Core.TT.Channel_Handle" FixedToPoint="true">
+      <Path>
+        <Point X="19.5" Y="7.188" />
+        <Point X="13" Y="7.188" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAEAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAIAAAAAAAQAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>TT\Handle.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Videos" />
-      <Property Name="Channels" />
+      <Property Name="ChannelAssignments" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TiktokE.Core.TT.Audio">
-    <Position X="23" Y="7.25" Width="1.5" />
-    <AssociationLine Name="Videos" Type="TiktokE.Core.TT.Video" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="23.562" Y="8.675" />
-        <Point X="23.562" Y="9.75" />
-        <Point X="21" Y="9.75" />
-      </Path>
-    </AssociationLine>
+    <Position X="23.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAABAAAAAAAAAAAg=</HashCode>
       <FileName>TT\Audio.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Videos" />
     </ShowAsCollectionAssociation>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="TiktokE.Core.TT.Video">
-    <Position X="19.5" Y="9.5" Width="1.5" />
+    <Position X="19.5" Y="9.5" Width="2" />
     <Members>
       <Property Name="AudioID" Hidden="true" />
       <Property Name="HandleID" Hidden="true" />
     </Members>
-    <AssociationLine Name="Handle" Type="TiktokE.Core.TT.Handle" FixedToPoint="true">
-      <Path>
-        <Point X="20.5" Y="9.5" />
-        <Point X="20.5" Y="8.296" />
-      </Path>
+    <AssociationLine Name="Handle" Type="TiktokE.Core.TT.Handle">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-0.671" Y="0.079" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="Audio" Type="TiktokE.Core.TT.Audio" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="21" Y="9.938" />
-        <Point X="23.75" Y="9.938" />
-        <Point X="23.75" Y="8.675" />
-      </Path>
+    <AssociationLine Name="Audio" Type="TiktokE.Core.TT.Audio">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.582" Y="0.116" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="Comments" Type="TiktokE.Core.TT.Comment" FixedToPoint="true">
-      <Path>
-        <Point X="19.5" Y="10" />
-        <Point X="17.25" Y="10" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.225" Y="0.004" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="Descriptions" Type="TiktokE.Core.TT.Video_Description" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="21" Y="10.375" />
-        <Point X="23.812" Y="10.375" />
-        <Point X="23.812" Y="12" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.056" Y="0.184" />
+        <Position X="0.161" Y="0.093" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAgAAAAAAEAAAAAQAAAAAJQAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAAABAAAAAAAAAAAAEAAAAAAAAAAAJQAAAAAAAAAAA=</HashCode>
       <FileName>TT\Video.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Handle" />
       <Property Name="Audio" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Comments" />
-      <Property Name="Descriptions" />
-    </ShowAsCollectionAssociation>
-    <Lollipop Orientation="Left" Position="0.725" />
-  </Class>
-  <Class Name="TiktokE.Core.TT.Comment">
-    <Position X="15.75" Y="9.5" Width="1.5" />
-    <Members>
-      <Property Name="AuthorID" Hidden="true" />
-      <Property Name="ReplyToID" Hidden="true" />
-      <Property Name="VideoID" Hidden="true" />
-    </Members>
-    <AssociationLine Name="Video" Type="TiktokE.Core.TT.Video" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="17.25" Y="9.812" />
-        <Point X="18.75" Y="9.812" />
-        <Point X="18.75" Y="9.812" />
-        <Point X="19.5" Y="9.812" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="Author" Type="TiktokE.Core.TT.Channel" FixedToPoint="true">
-      <Path>
-        <Point X="15.75" Y="10.106" />
-        <Point X="13.75" Y="10.106" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.11" Y="-0.219" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="ReplyTo" Type="TiktokE.Core.TT.Comment" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="16" Y="10.733" />
-        <Point X="16" Y="10.983" />
-        <Point X="16.875" Y="10.983" />
-        <Point X="16.875" Y="10.733" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.073" Y="0.302" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAAAAAgAAAgACAAAAAAAAQAAAACAAAAAg=</HashCode>
-      <FileName>TT\Comment.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Video" />
-      <Property Name="Author" />
-      <Property Name="ReplyTo" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="TiktokE.Core.TT.ChannelHandle">
-    <Position X="12.25" Y="7" Width="1.5" />
-    <Members>
-      <Property Name="ChannelID" Hidden="true" />
-      <Property Name="HandleID" Hidden="true" />
-    </Members>
-    <AssociationLine Name="Channel" Type="TiktokE.Core.TT.Channel" FixedToPoint="true">
-      <Path>
-        <Point X="13.062" Y="7.997" />
-        <Point X="13.062" Y="9.5" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.747" Y="0.092" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAAAABAgAAAAAAAAAAAAAAAAAAAAAAIAAAQAAAAAAAA=</HashCode>
-      <FileName>TT\ChannelHandle.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Channel" />
-      <Property Name="Handle" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="TiktokE.Core.TT.Tag">
-    <Position X="19.75" Y="14.5" Width="1.5" />
-    <Members>
-      <Property Name="ID" Hidden="true" />
-    </Members>
-    <AssociationLine Name="Assignments" Type="TiktokE.Core.TT.Description_Tag" FixedFromPoint="true">
-      <Path>
-        <Point X="21.25" Y="14.812" />
-        <Point X="23.25" Y="14.812" />
-      </Path>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TT\Tag.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Assignments" />
-    </ShowAsCollectionAssociation>
-    <Lollipop Orientation="Bottom" Position="0.1" />
   </Class>
   <Class Name="TiktokE.Core.UserVideoInteraction">
     <Position X="19.5" Y="12" Width="2" />
@@ -311,12 +139,6 @@
         <Point X="17.25" Y="12.375" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="Video" Type="TiktokE.Core.TT.Video" FixedFromPoint="true">
-      <Path>
-        <Point X="20.417" Y="12" />
-        <Point X="20.417" Y="10.925" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAgAgAAAAAAAAAAQAAAAAAAAg=</HashCode>
       <FileName>UserVideoInteraction.cs</FileName>
@@ -326,73 +148,21 @@
       <Property Name="Video" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="TiktokE.Core.TT.Video_Description">
-    <Position X="23.25" Y="12" Width="1.5" />
+  <Class Name="TiktokE.Core.TT.Channel_Handle" Collapsed="true">
+    <Position X="11.5" Y="6.75" Width="1.5" />
     <Members>
-      <Property Name="VideoID" Hidden="true" />
+      <Property Name="ChannelID" Hidden="true" />
+      <Property Name="Handle" Hidden="true" />
+      <Property Name="HandleID" Hidden="true" />
     </Members>
-    <AssociationLine Name="Video" Type="TiktokE.Core.TT.Video" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="23.625" Y="12" />
-        <Point X="23.625" Y="10.525" />
-        <Point X="21" Y="10.525" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.11" Y="-0.256" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="TagAssignments" Type="TiktokE.Core.TT.Description_Tag" FixedToPoint="true">
-      <Path>
-        <Point X="24.188" Y="13.233" />
-        <Point X="24.188" Y="14.5" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.242" Y="0.222" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAAAAAAAAAAAAgAAAAAAAAAAAAAAAQAAAAAg=</HashCode>
-      <FileName>TT\Video_Description.cs</FileName>
+      <HashCode>AAAAABAgAAAAAAAAEAAAAAAAAAAAAAIAAAQgAAAAIEA=</HashCode>
+      <FileName>TT\Channel_Handle.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Video" />
+      <Property Name="Handle" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="TagAssignments" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="TiktokE.Core.TT.Description_Tag">
-    <Position X="23.25" Y="14.5" Width="1.5" />
-    <Members>
-      <Property Name="DescriptionID" Hidden="true" />
-      <Property Name="TagID" Hidden="true" />
-    </Members>
-    <AssociationLine Name="Description" Type="TiktokE.Core.TT.Video_Description" FixedToPoint="true">
-      <Path>
-        <Point X="23.688" Y="14.5" />
-        <Point X="23.688" Y="13.233" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.002" Y="0.097" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="Tag" Type="TiktokE.Core.TT.Tag" FixedToPoint="true">
-      <Path>
-        <Point X="23.25" Y="15.062" />
-        <Point X="21.25" Y="15.062" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.129" Y="-0.2" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
-      <FileName>TT\Description_Tag.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Description" />
-      <Property Name="Tag" />
-    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

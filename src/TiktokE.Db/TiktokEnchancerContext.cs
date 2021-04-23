@@ -8,15 +8,17 @@ namespace TiktokE.Db
     public DbSet<Core.User> Users { get; set; }
     public DbSet<Core.UserVideoInteraction> UserVideoInteractions { get; set; }
     public DbSet<Core.UploaderPreference> UploaderPreferences { get; set; }
-    public DbSet<Core.TagPreference> TagPreferences { get; set; }
+    //public DbSet<Core.TagPreference> TagPreferences { get; set; }
 
     public DbSet<Core.TT.Video> Videos { get; set; }
-    public DbSet<Core.TT.Video_Description> Video_Descriptions { get; set; }
-    public DbSet<Core.TT.Tag> Tags { get; set; }
+    //public DbSet<Core.TT.Video_Description> Video_Descriptions { get; set; }
+    //public DbSet<Core.TT.Tag> Tags { get; set; }
 
     public DbSet<Core.TT.Channel> Channels { get; set; }
     public DbSet<Core.TT.Handle> Handles { get; set; }
-    public DbSet<Core.TT.Comment> Comments { get; set; }
+    //public DbSet<Core.TT.Comment> Comments { get; set; }
+
+    public DbSet<Core.TT.Audio> Audios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -28,11 +30,16 @@ namespace TiktokE.Db
     {
       base.OnModelCreating(mb);
       // HasAlternateKey // isUnique
-      
+      mb.Entity<Core.TT.Audio>().HasAlternateKey(item => new { item.Name, item.TTID });
       mb.Entity<Core.TT.Video>().HasAlternateKey(item => new { item.TTID, item.HandleID });
-      mb.Entity<Core.TT.Video>().HasAlternateKey(item => item.TTID);
       mb.Entity<Core.UploaderPreference>().HasAlternateKey(item => new { item.UserID, item.ChannelID });
-      mb.Entity<Core.TagPreference>().HasAlternateKey(item => new { item.UserID, item.TagID });
+      //mb.Entity<Core.TagPreference>().HasAlternateKey(item => new { item.UserID, item.TagID });
+      //mb.Entity<Core.TikTokEntity>().HasAlternateKey(item => item.TTID);
+      mb.Entity<Core.TT.Channel>().HasAlternateKey(item => item.TTID);
+      //mb.Entity<Core.TT.Channel>().HasAlternateKey(item => item.ActiveHandleID);
+      mb.Entity<Core.UserVideoInteraction>().HasAlternateKey(item => new { item.UserID, item.VideoID });
+
+      //mb.Entity<Core.TT.Channel>().HasAlternateKey(item => item.TTID );
       // HasKey
       // Relations
       // Property

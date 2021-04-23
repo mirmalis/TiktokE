@@ -48,7 +48,9 @@ namespace TiktokE.Api1
       app.UseHttpsRedirection();
 
       app.UseRouting();
-      app.UseCors(item => item.WithOrigins("https://www.tiktok.com"));
+      app.UseCors(item => {
+        item.WithOrigins("https://www.tiktok.com").AllowAnyHeader();
+      });
 
       app.UseAuthorization();
 

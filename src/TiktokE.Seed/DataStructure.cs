@@ -10,6 +10,10 @@ namespace TiktokE.Seed
 
     readonly List<Core.TT.Channel> channels = new();
     public void AddRange(params Core.TT.Channel[] elements) => channels.AddRange(elements);
+
+    readonly List<Core.TT.Video> videos = new();
+    public void AddRange(params Core.TT.Video[] elements) => videos.AddRange(elements);
+
     public void Inject(Db.TiktokEContext context, bool ensureDeleted = false)
     {
       if (ensureDeleted)
@@ -18,6 +22,7 @@ namespace TiktokE.Seed
 
       context.Users.AddRange(users);
       context.Channels.AddRange(channels);
+      context.Videos.AddRange(videos);
 
       context.SaveChanges();
     }

@@ -7,7 +7,7 @@ namespace TiktokE.Core
   {
     public string Name { get; set; }
     public ICollection<UploaderPreference> ChannelPreferencess { get; set; }
-    public ICollection<TagPreference> TagPreferences { get; set; }
     public ICollection<UserVideoInteraction> VideoInteractions { get; set; }
+    //public ICollection<TagPreference> TagPreferences { get; set; }
   }
 }

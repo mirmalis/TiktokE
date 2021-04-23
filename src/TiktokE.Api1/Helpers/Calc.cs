@@ -19,5 +19,9 @@ namespace TiktokE.Api1.Helpers
         throw new Exception("Core.ID does not match id, there must be an error");
       return core?.ID ?? id ?? throw new Exception("Provide ID");
     }
+    internal static ulong TikTokID(DateTime dt, uint rand = 0)
+    {
+      return (Convert.ToUInt64((dt - new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc)).TotalSeconds) << 32) + rand;
+    }
   }
 }
