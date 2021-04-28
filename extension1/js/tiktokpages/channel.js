@@ -1,20 +1,23 @@
-function authorID(element){
+console.log("Channel.js");
+if (document.querySelector(".error-page") === null) {
+
+function authorID(element) {
   return element.querySelector("video").getAttribute("authorid");
 }
-function channelID(){
+function channelID() {
   //document.querySelector("video").getAttribute("authorid")
   let r = /profile\/(\d+)\?/;
   let match = r.exec(
-    document.querySelector("meta + [property^='al:android:url']")?.content 
+    document.querySelector("meta + [property^='al:android:url']")?.content
     ?? document.querySelector("meta + [property^='al:ios:url']")?.content
   );
-  if(match){
+  if (match) {
     return match[1];
   }
   return null;
 }
 
-fetch('https://localhost:5001/api/Channels', {
+fetch('https://localhost:5101/api/Channels', {
   method: 'POST', // or 'PUT'
   headers: {
     'Content-Type': 'application/json',
@@ -30,5 +33,8 @@ fetch('https://localhost:5001/api/Channels', {
     console.log('Success:', data);
   })
   .catch((error) => {
-    console.error('Error:', error);
+    // console.error('Error:', error);
   });
+} else {
+  console.log("error @ channel"); // TODO
+}

@@ -23,6 +23,13 @@
   "host_permissions":[
     "https://www.tiktok.com/",
     "https://tinwap.lt/",
-    "https://localhost:5001/"
+    "https://localhost:5101/"
+  ],
+  "content_scripts":[
+    { 
+      "matches": ["https://*.tiktok.com/@*"],
+      "css": [],
+      "js": ["./js/tiktokpages/channel.js"]
+    }
   ]
 }

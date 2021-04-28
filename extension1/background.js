@@ -21,6 +21,7 @@ function TikTokPage(url) {
 }
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   console.log('onUpdated', changeInfo);
+  return;
   if (! /^https:\/\/www\.tiktok\.com\/.*/.test(tab.url))
     return;
   switch (changeInfo.status) {
