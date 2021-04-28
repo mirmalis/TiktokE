@@ -26,10 +26,25 @@
     "https://localhost:5101/"
   ],
   "content_scripts":[
-    { 
+    {
       "matches": ["https://*.tiktok.com/@*"],
-      "css": [],
       "js": ["./js/tiktokpages/channel.js"]
+    },
+    {
+      "matches": ["https://*.tiktok.com/following*"],
+      "js": ["./js/injections/injectNavigation.js", "./js/tiktokpages/following.js"]
+    },
+    {
+      "matches": ["https://*.tiktok.com/en*", "https://*.tiktok.com/foryou*"],
+      "js": ["./js/injections/injectNavigation.js", "./js/tiktokpages/foryou.js"]
+    },
+    {
+      "matches": ["https://*.tiktok.com/music*"],
+      "js": ["./js/tiktokpages/music.js"]
+    },
+    {
+      "matches": ["https://*.tiktok.com/video*"],
+      "js": ["./js/tiktokpages/video.js"]
     }
   ]
 }
